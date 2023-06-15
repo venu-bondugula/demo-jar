@@ -1,0 +1,26 @@
+version: "3"
+services:
+  students-db:
+    container_name: students-db
+    image: "mysql:8"
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=students_db
+      - MYSQL_USER=sa
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 20s
+      retries: 10
+  student-server:
+    container_name: students-server
+    image: students-server
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      students-db:
+        condition: service_healthy
