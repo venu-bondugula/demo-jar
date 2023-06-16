@@ -11,29 +11,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dc.demo.demojar.models.Student;
-import dc.demo.demojar.services.StudentService;
+import dc.demo.demojar.models.Item;
+import dc.demo.demojar.services.ItemService;
 
 @RestController
-@RequestMapping("/api/v1/students")
-public class StudentController {
+@RequestMapping("/api/v1/items")
+public class ItemController {
 
     @Autowired
-    private StudentService service;
+    private ItemService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Student> getStudentById(@PathVariable("id") long id) {
-        return ResponseEntity.of(service.getStudentById(id));
+    public ResponseEntity<Item> getItemById(@PathVariable("id") long id) {
+        return ResponseEntity.of(service.getItemById(id));
     }
 
     @GetMapping()
-    public List<Student> getAllStudents() {
-        return service.getAllStudents();
+    public List<Item> getAllItems() {
+        return service.getAllItems();
     }
 
     @PostMapping
-    public void createStudent(@RequestBody Student student) {
-        service.createStudent(student);
+    public void createItem(@RequestBody Item item) {
+        service.createItem(item);
     }
 
 }

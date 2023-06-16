@@ -4,16 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Data
-@ToString
-@EqualsAndHashCode
-@NoArgsConstructor
-public class Student {
+public class Country {
 
     @Id
     @GeneratedValue
@@ -21,6 +15,7 @@ public class Student {
 
     private String name;
 
-    private double fee;
+    private double shippingRate;
 
+    private int weightInGrams;
 }
